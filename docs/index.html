@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Reset Method — Fix Your Money, Mind & Life</title>
+  <meta name="description" content="Digital tools that reset the parts of your life stuck on repeat. Budgets, boundaries, productivity systems — built to actually work." />
+  <meta property="og:title" content="The Reset Method" />
+  <meta property="og:description" content="Stop managing symptoms. Start resetting systems." />
+  <style>
+    :root {
+      --navy: #1B2A4A;
+      --gold: #D4A017;
+      --white: #FFFFFF;
+      --light: #F4F6FB;
+      --green: #27AE60;
+      --dark: #2C3E50;
+      --gray: #6C757D;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--white); color: var(--dark); }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { color: var(--gold); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; margin-left: 1.5rem; }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 1.5rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #2d4a7a 100%);
+      color: white;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,160,23,0.2);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,160,23,0.4); }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: white; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.8rem; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+
+    /* SECTION */
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      text-align: center;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; text-align: center; margin-bottom: 0.8rem; color: var(--navy); }
+    .section-sub { text-align: center; color: var(--gray); font-size: 1rem; max-width: 550px; margin: 0 auto 3rem; line-height: 1.6; }
+
+    /* PRODUCT CARD */
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .product-card {
+      border: 2px solid #E8EDF5;
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      background: white;
+    }
+    .product-card:hover {
+      border-color: var(--navy);
+      box-shadow: 0 8px 30px rgba(27,42,74,0.12);
+      transform: translateY(-3px);
+    }
+    .product-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, #FFFCF0 0%, #FFF8E1 100%);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.2rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .product-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .product-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
+    .product-subtitle { font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem; line-height: 1.5; }
+    .product-features { list-style: none; margin-bottom: 1.5rem; }
+    .product-features li {
+      font-size: 0.85rem;
+      color: var(--dark);
+      padding: 0.25rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .product-features li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 1.5rem; font-weight: 900; color: var(--navy); }
+    .product-price span { font-size: 0.75rem; font-weight: 400; color: var(--gray); }
+    .btn-buy {
+      background: var(--navy);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .btn-buy:hover { background: var(--gold); color: var(--navy); }
+    .product-card.featured .btn-buy { background: var(--gold); color: var(--navy); }
+    .product-card.featured .btn-buy:hover { background: var(--navy); color: white; }
+
+    /* PAIN POINTS */
+    .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pain-card {
+      background: var(--light);
+      padding: 1.4rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--navy);
+    }
+    .pain-emoji { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .pain-title { font-weight: 700; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .pain-text { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+    /* BUNDLE */
+    .bundle-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #2d4a7a 100%);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      color: white;
+    }
+    .bundle-box h2 { color: var(--gold); margin-bottom: 0.5rem; }
+    .bundle-box p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+    .bundle-items { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .bundle-item {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .bundle-price { margin-bottom: 1.5rem; }
+    .bundle-price .was { color: rgba(255,255,255,0.5); text-decoration: line-through; font-size: 1.1rem; }
+    .bundle-price .now { color: var(--gold); font-size: 2.5rem; font-weight: 900; display: block; }
+    .bundle-price .save { color: var(--green); font-size: 0.85rem; font-weight: 600; }
+
+    /* TESTIMONIALS */
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .testimonial {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 0.8rem; }
+    .testimonial-text { font-size: 0.9rem; line-height: 1.6; color: var(--dark); margin-bottom: 1rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+    .testimonial-role { font-size: 0.78rem; color: var(--gray); }
+
+    /* FAQ */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #E8EDF5; padding: 1.2rem 0; }
+    .faq-q { font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .faq-a { color: var(--gray); font-size: 0.9rem; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid #E8EDF5; margin: 0; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0.8rem 1rem; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .hero-stats { gap: 1.5rem; }
+      section { padding: 3rem 1rem; }
+      .bundle-box { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">The Reset Method</div>
+  <div>
+    <a href="#products" class="nav-link">Products</a>
+    <a href="#bundle" class="nav-link">Bundle</a>
+    <a href="#products" class="nav-cta">Shop Now →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Digital Tools for Real Life</div>
+  <h1>Stop managing symptoms.<br><span>Start resetting systems.</span></h1>
+  <p>Templates, trackers, and playbooks that fix the parts of your life stuck on repeat — your money, your mind, your relationships, your work.</p>
+  <div class="hero-btns">
+    <a href="#products" class="btn-primary">Browse Products →</a>
+    <a href="#bundle" class="btn-secondary">See The Bundle</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">2,300+</div><div class="stat-label">Downloads</div></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Avg Rating</div></div>
+    <div class="stat"><div class="stat-num">$27</div><div class="stat-label">Starting Price</div></div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section>
+  <div class="section-label">Sound Familiar?</div>
+  <h2>You're not the problem. Your system is.</h2>
+  <p class="section-sub">Every product in The Reset Method is built for one specific loop you can't break.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-emoji">💸</div>
+      <div class="pain-title">Money just disappears</div>
+      <div class="pain-text">You get paid. You try to be responsible. Somehow it's always gone by the 20th.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-emoji">🧠</div>
+      <div class="pain-title">Can't turn your brain off</div>
+      <div class="pain-text">Overthinking, people-pleasing, 2am spirals. You're exhausted by your own mind.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-emoji">💔</div>
+      <div class="pain-title">Same relationship pattern</div>
+      <div class="pain-text">You know it before it happens. And somehow you can't stop it from happening anyway.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-emoji">⏰</div>
+      <div class="pain-title">Busy but not moving</div>
+      <div class="pain-text">12-hour days. No systems. Revenue flat. Burnout creeping. You need a reset.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-label">The Collection</div>
+  <h2>Pick Your Reset</h2>
+  <p class="section-sub">Every product is a text-based digital download. No video, no fluff, no waiting. Instant access after purchase.</p>
+  <div class="products">
+
+    <div class="product-card featured">
+      <div class="featured-badge">⭐ Best Seller</div>
+      <div class="product-icon">💰</div>
+      <div class="product-title">The Paycheck Reset</div>
+      <div class="product-subtitle">Monthly budget spreadsheet with auto-calculating tabs, debt payoff date, and subscription audit.</div>
+      <ul class="product-features">
+        <li>Auto-calculating budget tracker</li>
+        <li>Money Map pie chart (auto-generated)</li>
+        <li>Debt Snowball with payoff date</li>
+        <li>Bi-weekly paycheck splitter</li>
+        <li>Subscription audit — find hidden charges</li>
+        <li>12-minute setup guide included</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$27 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">🚀</div>
+      <div class="product-title">The $500 Challenge</div>
+      <div class="product-subtitle">30 daily micro-challenges that build your first emergency fund — one small win at a time.</div>
+      <ul class="product-features">
+        <li>30 daily challenges with $ amounts</li>
+        <li>Visual savings thermometer printable</li>
+        <li>25 quick-win money-finding strategies</li>
+        <li>Milestone celebration tracker</li>
+        <li>No "make more money" advice</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$17 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">🧠</div>
+      <div class="product-title">The Calm Brain Toolkit</div>
+      <div class="product-subtitle">CBT-based templates for overthinkers who can't turn their brain off at night.</div>
+      <ul class="product-features">
+        <li>Thought Court CBT worksheet</li>
+        <li>Brain dump → clarity journal templates</li>
+        <li>5 evening wind-down checklists</li>
+        <li>Sunday Reset planner for anxious minds</li>
+        <li>Permission to Rest self-care menu</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$32 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">💌</div>
+      <div class="product-title">Scripts for Secure Love</div>
+      <div class="product-subtitle">40 copy-paste scripts for the conversations that feel impossible — from "what are we" to ending a situationship.</div>
+      <ul class="product-features">
+        <li>15 early-stage dating scripts</li>
+        <li>15 hard-conversation scripts</li>
+        <li>10 "danger zone" scripts</li>
+        <li>Psychological explanation for each</li>
+        <li>"Don't say this instead" comparison</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$22 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">⚡</div>
+      <div class="product-title">Solopreneur OS</div>
+      <div class="product-subtitle">Pre-built Notion dashboard + 15 SOP templates so you can run your business like a CEO instead of a firefighter.</div>
+      <ul class="product-features">
+        <li>7 linked Notion databases</li>
+        <li>15 fill-in-the-blank SOP templates</li>
+        <li>Weekly CEO Sprint Planner</li>
+        <li>Client pipeline + content calendar</li>
+        <li>Video setup walkthrough included</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$67 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon">💔</div>
+      <div class="product-title">Toxic Pattern Detox</div>
+      <div class="product-subtitle">30-day workbook for people who know exactly what their pattern is and can't stop repeating it anyway.</div>
+      <ul class="product-features">
+        <li>30 days of guided exercises</li>
+        <li>Relationship autopsy framework</li>
+        <li>Origin mapping templates</li>
+        <li>Cognitive reframing worksheets</li>
+        <li>"New standard" behavioral checklist</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$37 <span>one-time</span></div>
+        <a href="https://gumroad.com" class="btn-buy">Buy Now →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BUNDLE -->
+<section id="bundle" style="max-width:900px">
+  <div class="bundle-box">
+    <div class="section-label" style="color:rgba(212,160,23,0.7)">Best Value</div>
+    <h2>The Complete Reset Bundle</h2>
+    <p>All 5 products. Every area of your life. One price.</p>
+    <div class="bundle-items">
+      <div class="bundle-item">💰 Paycheck Reset</div>
+      <div class="bundle-item">🚀 $500 Challenge</div>
+      <div class="bundle-item">🧠 Calm Brain Toolkit</div>
+      <div class="bundle-item">💌 Scripts for Secure Love</div>
+      <div class="bundle-item">⚡ Solopreneur OS</div>
+    </div>
+    <div class="bundle-price">
+      <span class="was">$165 individually</span>
+      <span class="now">$97</span>
+      <span class="save">You save $68 (41% off)</span>
+    </div>
+    <a href="https://gumroad.com" class="btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;">Get The Bundle →</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-label">What People Say</div>
+  <h2>Real results. Real people.</h2>
+  <p class="section-sub">These are the messages that make building this worth it.</p>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"I set up the Paycheck Reset in 11 minutes on a Tuesday night. Found $87/month in subscriptions I'd completely forgotten about. Paid for itself immediately."</div>
+      <div class="testimonial-author">Jasmine T.</div>
+      <div class="testimonial-role">Marketing coordinator, 28</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"The debt snowball calculator showing my debt-free date as April 2026 changed something in my brain. I stopped feeling hopeless. I have a date now."</div>
+      <div class="testimonial-author">Marcus R.</div>
+      <div class="testimonial-role">Teacher, 31</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"The Scripts for Secure Love is the product I wish I had 3 relationships ago. I used the 'what are we' script word for word. It worked. We're exclusive now."</div>
+      <div class="testimonial-author">Priya K.</div>
+      <div class="testimonial-role">Product designer, 34</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section>
+  <div class="section-label">Questions</div>
+  <h2>FAQ</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What format do these products come in?</div>
+      <div class="faq-a">Everything is a digital download — spreadsheets (.xlsx), PDFs, or Notion templates. You get instant access after purchase. No waiting, no shipping.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need special software?</div>
+      <div class="faq-a">The spreadsheet works in Google Sheets (completely free) or Microsoft Excel. PDFs work in any PDF viewer. Notion templates require a free Notion account.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this a subscription?</div>
+      <div class="faq-a">No. Every product is a one-time purchase. You buy it once, you own it forever. No monthly fees, no renewal reminders.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if it doesn't work for me?</div>
+      <div class="faq-a">Email us within 7 days and we'll send a full refund. No questions asked. We'd rather you keep your money than have a product sitting unused.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are these AI-generated?</div>
+      <div class="faq-a">The frameworks and content are AI-researched and human-curated. Every template has been tested and refined based on what actually helps people make progress. The math works. The scripts are real. The system works.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div style="background: var(--light); padding: 3rem 2rem; text-align: center;">
+  <h2 style="font-size:1.8rem; margin-bottom:0.8rem;">Ready to reset?</h2>
+  <p style="color:var(--gray); margin-bottom:1.5rem; max-width:500px; margin-left:auto; margin-right:auto;">Pick the area of your life that needs the most work. Start there. Everything else follows.</p>
+  <a href="#products" class="btn-primary">Browse Products →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 The Reset Method · All products are digital downloads · <a href="mailto:hello@theresetmethod.com">hello@theresetmethod.com</a></p>
+  <p style="margin-top:0.5rem;">Made with intention for people who are tired of being stuck.</p>
+</footer>
+
+</body>
+</html>
